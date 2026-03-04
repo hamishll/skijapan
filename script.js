@@ -1,28 +1,27 @@
-// Nav scroll effect
+// === Nav scroll effect ===
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Mobile menu toggle
+// === Mobile menu toggle ===
 const toggle = document.getElementById('nav-toggle');
 const links = document.getElementById('nav-links');
 toggle.addEventListener('click', () => {
   links.classList.toggle('open');
 });
 
-// Close mobile menu on link click
 links.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     links.classList.remove('open');
   });
 });
 
-// Active nav highlighting on scroll
+// === Active nav highlighting ===
 const sections = document.querySelectorAll('.section, .hero');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-const observer = new IntersectionObserver(entries => {
+const navObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const id = entry.target.id;
@@ -33,7 +32,120 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { rootMargin: '-40% 0px -60% 0px' });
 
-sections.forEach(section => observer.observe(section));
+sections.forEach(section => navObserver.observe(section));
+
+// === Snow Canvas ===
+(function initSnow() {
+  const canvas = document.getElementById('snow-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animFrame;
+
+  function resize() {
+    const hero = canvas.parentElement;
+    canvas.width = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+
+  function createParticles() {
+    particles = [];
+    const count = Math.floor(canvas.width * canvas.height / 8000);
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: Math.random() * 0.8 + 0.3,
+        opacity: Math.random() * 0.5 + 0.2,
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(228, 223, 216, ${p.opacity})`;
+      ctx.fill();
+
+      p.x += p.dx + Math.sin(p.y * 0.003) * 0.3;
+      p.y += p.dy;
+
+      if (p.y > canvas.height) {
+        p.y = -5;
+        p.x = Math.random() * canvas.width;
+      }
+      if (p.x > canvas.width) p.x = 0;
+      if (p.x < 0) p.x = canvas.width;
+    });
+    animFrame = requestAnimationFrame(draw);
+  }
+
+  resize();
+  createParticles();
+  draw();
+
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  });
+
+  // Pause when not visible
+  const heroObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      if (!animFrame) draw();
+    } else {
+      cancelAnimationFrame(animFrame);
+      animFrame = null;
+    }
+  });
+  heroObserver.observe(canvas.parentElement);
+})();
+
+// === Scroll Reveal ===
+(function initReveal() {
+  // Mark elements for reveal
+  const selectors = [
+    '.season-chart',
+    '.holiday-card',
+    '.timing-card',
+    '.resort-card',
+    '.flight-card',
+    '.accom-card',
+    '.day-card',
+    '.activity-card',
+    '.cost-table-wrapper',
+    '.tip-box',
+    '.section h2',
+    '.section-intro',
+    '.subsection-title',
+  ];
+
+  document.querySelectorAll(selectors.join(', ')).forEach(el => {
+    el.classList.add('reveal');
+  });
+
+  // Mark grids for stagger
+  document.querySelectorAll('.holiday-grid, .activities-grid, .accom-grid, .flights-grid').forEach(grid => {
+    grid.classList.add('reveal-stagger');
+    grid.classList.add('reveal');
+  });
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+})();
 
 // === Season Chart ===
 const weekData = [
@@ -63,14 +175,15 @@ const weekData = [
     snow: 98, sunny: 13, temp: '-9°C',
     crowd: 'med', crowdLabel: 'Moderate',
     holidays: ['🇯🇵 Coming of Age Day (Jan 11 — Monday)', '🇦🇺 Summer holidays continue'],
-    notes: 'Peak snowfall zone begins. Week 2 of January is the snowiest week at Hakuba (avg 76cm at Hakuba 47), Nozawa (avg 72cm), and Myoko (avg 74cm at Suginohara). Japanese 3-day weekend around Coming of Age Day. Aussie crowds still present. Snow depth reaching 200–300cm at Niseko.'
+    notes: 'Peak snowfall zone begins. Japanese 3-day weekend around Coming of Age Day. Aussie crowds still present. Snow depth reaching 200–300cm at Niseko mid-elevation. Our trip starts Jan 16 — catching the tail end of this week.',
+    recommended: true
   },
   {
     label: 'Jan 18–24', month: 'Jan',
     snow: 100, sunny: 14, temp: '-9°C',
     crowd: 'low', crowdLabel: 'Quiet',
     holidays: ['🇦🇺 Summer holidays winding down (VIC ends ~Jan 26)'],
-    notes: 'THE SWEET SPOT. Peak powder conditions continue — Niseko averages ~100cm/week, Myoko ~88cm/week. All major holidays finished except tail end of Aussie summer. Chinese New Year not until Feb 6. Book this week if you can. Coldest temperatures of the season (-7°C day, -12°C night at Niseko).',
+    notes: 'THE SWEET SPOT — we\'re here. Peak powder conditions — Niseko averages ~100cm/week. All major holidays finished except tail end of Aussie summer. Chinese New Year not until Feb 6. Coldest temperatures of the season (-7°C day, -12°C night). Expect waist-deep powder days.',
     recommended: true
   },
   {
@@ -78,7 +191,7 @@ const weekData = [
     snow: 100, sunny: 14, temp: '-9°C',
     crowd: 'low', crowdLabel: 'Quiet',
     holidays: ['🇦🇺 Most summer holidays ending (NSW/TAS to ~Feb 3, ACT to ~Feb 1)'],
-    notes: 'Another excellent week. Deepest snowpack of the season building — snow depth up to 300cm+ at Niseko, 400cm+ at Nozawa upper slopes. Aussie holidays wrapping up. Still 6 days before Chinese New Year. Outstanding powder-to-crowd ratio.',
+    notes: 'Still here — another excellent week. Deepest snowpack of the season building, up to 300cm+ at Niseko. Aussie holidays wrapping up. Still 6 days before Chinese New Year. Outstanding powder-to-crowd ratio. Our last few days before heading home Jan 30.',
     recommended: true
   },
   {
@@ -121,8 +234,7 @@ const weekData = [
     snow: 55, sunny: 28, temp: '-3°C',
     crowd: 'low', crowdLabel: 'Quiet',
     holidays: ['Hakuba Snow Machine Festival (if scheduled ~early Mar)'],
-    notes: 'Spring skiing begins with more bluebird days — roughly 1 perfect sunny day per week in Niseko. Hakuba may host Snow Machine festival bringing village crowds. Sunny groomers in the morning, soft snow in the afternoon. Great value, 20–30% off peak accommodation.',
-    recommended: true
+    notes: 'Spring skiing begins with more bluebird days — roughly 1 perfect sunny day per week in Niseko. Sunny groomers in the morning, soft snow in the afternoon. Great value, 20–30% off peak accommodation.'
   },
   {
     label: 'Mar 13–19', month: 'Mar',
@@ -193,7 +305,7 @@ function showWeekDetail(index, el) {
     : '<span class="holiday-tag good">No major holidays</span>';
 
   detail.innerHTML = `
-    <h4>${week.label} <span style="font-weight:400;color:var(--text-light);font-size:0.9rem">${week.recommended ? '— Recommended' : ''}</span></h4>
+    <h4>${week.label} <span style="font-weight:400;color:var(--text-muted);font-size:0.9rem">${week.recommended ? '— Recommended' : ''}</span></h4>
     <div class="week-detail-stats">
       <span class="week-detail-stat"><strong>Snow:</strong> ${week.snow >= 90 ? 'Heavy' : week.snow >= 65 ? 'Good' : week.snow >= 40 ? 'Moderate' : 'Light'} (${week.snow}%)</span>
       <span class="week-detail-stat"><strong>Sun:</strong> ~${week.sunny}% clear days</span>
@@ -201,7 +313,7 @@ function showWeekDetail(index, el) {
       <span class="week-detail-stat"><strong>Crowds:</strong> ${week.crowdLabel}</span>
     </div>
     <div class="week-detail-holidays">${holidayTags}</div>
-    <p style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-light)">${week.notes}</p>
+    <p style="margin-top:0.6rem;font-size:0.9rem;color:var(--text-muted)">${week.notes}</p>
   `;
 }
 

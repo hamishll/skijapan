@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Japow 2027 — Boys Ski Trip</title>
+  <title>Japow 2027 — Niseko, Jan 16–30</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,10 +18,11 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="#when">When to Go</a></li>
-        <li><a href="#resorts">Resorts</a></li>
+        <li><a href="#resort">Niseko</a></li>
         <li><a href="#flights">Flights</a></li>
         <li><a href="#accommodation">Accommodation</a></li>
         <li><a href="#itinerary">Itinerary</a></li>
+        <li><a href="#activities">Activities</a></li>
         <li><a href="#costs">Costs</a></li>
       </ul>
     </div>
@@ -28,10 +31,11 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
+    <canvas id="snow-canvas"></canvas>
     <div class="hero-content">
       <h1>Japow 2027</h1>
-      <p class="hero-tagline">The boys are heading to Japan. Deep powder. Cold beers. Zero excuses.</p>
-      <a href="#resorts" class="btn">Check Out the Resorts</a>
+      <p class="hero-tagline">Niseko, Hokkaido. Jan 16–30. Deep powder. Cold beers. Zero excuses.</p>
+      <a href="#resort" class="btn">Check Out the Plan</a>
     </div>
     <div class="hero-mountains">
       <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -77,217 +81,80 @@
         </div>
       </div>
 
-      <!-- Holiday Calendar -->
-      <h3 class="subsection-title">Holiday Calendar — Who's Coming When</h3>
-      <p class="section-intro">Crowds at Japanese resorts are driven by holidays from multiple countries. Here are the key dates for the 2026/27 season.</p>
-
-      <div class="holiday-grid">
-        <div class="holiday-card">
-          <div class="holiday-flag">🇬🇧</div>
-          <h4>United Kingdom</h4>
-          <ul>
-            <li><strong>Christmas Break:</strong> ~Dec 18 – Jan 4</li>
-            <li><strong>February Half Term:</strong> Feb 15–19 (most areas; some Feb 8–12 or Feb 22–26)</li>
-            <li><strong>Easter Break:</strong> ~Mar 26 – Apr 9 (Easter Sunday is Mar 28)</li>
-            <li>Half term and Easter drive prices up at Niseko & Hakuba especially</li>
-          </ul>
-        </div>
-        <div class="holiday-card">
-          <div class="holiday-flag">🇦🇺</div>
-          <h4>Australia</h4>
-          <ul>
-            <li><strong>Summer Holidays:</strong> ~Dec 12–19 start (varies by state) through Jan 26 – Feb 3 end</li>
-            <li><strong>NSW/TAS:</strong> Dec 18 – Feb 3 | <strong>VIC:</strong> Dec 19 – Jan 26</li>
-            <li><strong>QLD/SA/NT:</strong> Dec 11–12 – Jan 26 | <strong>WA:</strong> Dec 18 – Jan 31</li>
-            <li>Huge Aussie contingent at Niseko — crowds peak early Jan, thin from late Jan</li>
-          </ul>
-        </div>
-        <div class="holiday-card">
-          <div class="holiday-flag">🇨🇳🇰🇷</div>
-          <h4>China & Korea</h4>
-          <ul>
-            <li><strong>Chinese New Year:</strong> Feb 6, 2027 (Golden Week Feb 6–12)</li>
-            <li><strong>Korean Seollal:</strong> Feb 6–8 (3-day holiday)</li>
-            <li><strong>Korean winter vacation:</strong> ~Dec 21 – Feb 28 (long school break)</li>
-            <li>Niseko gets very crowded during CNY; Myoko & Nozawa less affected</li>
-          </ul>
-        </div>
-        <div class="holiday-card">
-          <div class="holiday-flag">🇯🇵</div>
-          <h4>Japan</h4>
-          <ul>
-            <li><strong>New Year (Oshogatsu):</strong> Dec 29 – Jan 3 (many take Dec 26–Jan 3)</li>
-            <li><strong>Coming of Age Day:</strong> Jan 11 (Monday — 3-day weekend)</li>
-            <li><strong>National Foundation Day:</strong> Feb 11</li>
-            <li><strong>Emperor's Birthday:</strong> Feb 23</li>
-            <li><strong>Vernal Equinox Day:</strong> Mar 20</li>
-            <li>Weekends are always busier than weekdays at domestic resorts</li>
-          </ul>
-        </div>
-        <div class="holiday-card">
-          <div class="holiday-flag">🇸🇬🇭🇰🇹🇼</div>
-          <h4>Singapore, Hong Kong & Taiwan</h4>
-          <ul>
-            <li><strong>SG School Holidays:</strong> ~Dec 12 – Jan 5 (MOE); international schools similar</li>
-            <li><strong>HK Christmas Break:</strong> ~Dec 18 – Jan 4 (2–3 weeks)</li>
-            <li><strong>Taiwan Lunar New Year:</strong> ~Feb 14–17 (7–10 day break around LNY)</li>
-            <li><strong>Vietnamese Tet:</strong> Also around Feb 6 — growing ski tourist segment</li>
-            <li>Growing SE Asian tourist numbers at Niseko especially</li>
-          </ul>
-        </div>
-      </div>
-
       <!-- Recommendation -->
       <div class="timing-grid">
         <div class="timing-card recommendation full-width">
-          <div class="timing-badge rec">Our Pick</div>
-          <h3>Jan 17–31 or Mar 6–20, 2027</h3>
-          <p>The <strong>last two weeks of January</strong> hit the sweet spot — peak snowfall (Niseko avg ~100cm/week, Myoko ~88cm/week), Australian holidays winding down, and a full week before Chinese New Year (Feb 6). Expect the coldest temps (-9°C avg) and deepest powder of the season. Alternatively, <strong>early-to-mid March</strong> offers excellent value with good base depth (300–500cm accumulated), far fewer crowds, more bluebird days (~28–30% clear), and 20–30% off accommodation — just warmer temps and lighter fresh snow. Aim for a Saturday-to-Saturday window for the best flight options.</p>
+          <div class="timing-badge rec">Our Dates</div>
+          <h3>Jan 16–30, 2027</h3>
+          <p>We've nailed the sweet spot. The <strong>second half of January</strong> is peak powder season — Niseko averages ~100cm of snowfall per week, with the coldest temperatures (-9°C avg) and deepest powder of the year. Japanese holidays ended Jan 3, Australian holidays are winding down, and Chinese New Year doesn't hit until Feb 6. This gives us two full weeks of the best snow-to-crowd ratio of the entire season. Snow depth will be 250–350cm and building. Expect waist-deep powder days.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Resorts -->
-  <section class="section section-alt" id="resorts">
+  <!-- Photo Strip -->
+  <div class="photo-strip">
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=600&auto=format&fit=crop&q=80" alt="Deep powder skiing in Japan" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=600&auto=format&fit=crop&q=80" alt="Snow-covered mountains in Hokkaido" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&auto=format&fit=crop&q=80" alt="Japanese ramen bowl" loading="lazy">
+    </div>
+    <div class="photo-strip-item">
+      <img src="https://images.unsplash.com/photo-1580019542155-247062e19ce4?w=600&auto=format&fit=crop&q=80" alt="Japanese hot spring in winter" loading="lazy">
+    </div>
+  </div>
+
+  <!-- Niseko -->
+  <section class="section section-alt" id="resort">
     <div class="container">
-      <h2>The Resorts</h2>
-      <p class="section-intro">Four world-class options, each with a different flavour. Here's how they stack up.</p>
+      <h2>Niseko</h2>
+      <p class="section-intro">Four interconnected resorts on one mountain, legendary powder, and the best après scene in Japan.</p>
 
-      <div class="resort-grid">
-
-        <!-- Niseko -->
-        <div class="resort-card">
-          <div class="resort-header niseko">
-            <h3>Niseko</h3>
-            <span class="resort-location">Hokkaido</span>
-          </div>
-          <div class="resort-body">
-            <div class="resort-stats">
-              <div class="stat"><span class="stat-value">15m+</span><span class="stat-label">Annual snowfall</span></div>
-              <div class="stat"><span class="stat-value">887m</span><span class="stat-label">Vertical drop</span></div>
-              <div class="stat"><span class="stat-value">4</span><span class="stat-label">Linked resorts</span></div>
-            </div>
-            <p>The most famous powder destination in Japan. Four interconnected resorts (Grand Hirafu, Hanazono, Niseko Village, Annupuri) offer huge terrain variety. English-friendly with an excellent après scene.</p>
-            <div class="resort-details">
-              <h4>Pros</h4>
-              <ul>
-                <li>Legendary consistent powder</li>
-                <li>Great nightlife and restaurants</li>
-                <li>Easy for English speakers</li>
-                <li>Large skiable area with night skiing</li>
-              </ul>
-              <h4>Cons</h4>
-              <ul>
-                <li>Most expensive option</li>
-                <li>Can feel less "authentically Japanese"</li>
-                <li>Gets crowded in peak weeks</li>
-              </ul>
-              <h4>Lift Pass</h4>
-              <p class="price">~¥7,500/day (~£37)</p>
-            </div>
-          </div>
+      <div class="resort-card" style="max-width:100%">
+        <div class="resort-header niseko">
+          <h3>Niseko United</h3>
+          <span class="resort-location">Hokkaido</span>
         </div>
+        <div class="resort-body">
+          <div class="resort-stats">
+            <div class="stat"><span class="stat-value">15m+</span><span class="stat-label">Annual snowfall</span></div>
+            <div class="stat"><span class="stat-value">887m</span><span class="stat-label">Vertical drop</span></div>
+            <div class="stat"><span class="stat-value">4</span><span class="stat-label">Linked resorts</span></div>
+            <div class="stat"><span class="stat-value">30+</span><span class="stat-label">Lifts</span></div>
+            <div class="stat"><span class="stat-value">2,191 acres</span><span class="stat-label">Skiable terrain</span></div>
+          </div>
+          <p>The most famous powder destination in Japan. Four interconnected resorts — <strong>Grand Hirafu</strong>, <strong>Hanazono</strong>, <strong>Niseko Village</strong>, and <strong>Annupuri</strong> — offer huge terrain variety from groomers to steep backcountry gates. English-friendly with an excellent international food and nightlife scene in Hirafu village.</p>
 
-        <!-- Hakuba -->
-        <div class="resort-card">
-          <div class="resort-header hakuba">
-            <h3>Hakuba</h3>
-            <span class="resort-location">Nagano, Japanese Alps</span>
-          </div>
-          <div class="resort-body">
-            <div class="resort-stats">
-              <div class="stat"><span class="stat-value">11m+</span><span class="stat-label">Annual snowfall</span></div>
-              <div class="stat"><span class="stat-value">1,071m</span><span class="stat-label">Vertical drop</span></div>
-              <div class="stat"><span class="stat-value">10</span><span class="stat-label">Resorts in valley</span></div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:1.5rem">
+            <div>
+              <h4>The Four Resorts</h4>
+              <ul>
+                <li><strong>Grand Hirafu</strong> — Largest area, best nightlife, most runs. The main base.</li>
+                <li><strong>Hanazono</strong> — Tree runs, powder bowls, family-friendly. Quieter.</li>
+                <li><strong>Niseko Village</strong> — Steeper terrain, ski-in/ski-out hotels, good tree skiing.</li>
+                <li><strong>Annupuri</strong> — Gentler slopes, quieter, great for intermediates and Japanese-style lodges.</li>
+              </ul>
             </div>
-            <p>Host of the 1998 Winter Olympics. Hakuba Valley has 10 resorts offering everything from steep alpine terrain to mellow groomers. A great mix of Japanese culture and international amenities.</p>
-            <div class="resort-details">
-              <h4>Pros</h4>
+            <div>
+              <h4>Why Niseko</h4>
               <ul>
-                <li>Biggest vertical drop in Japan</li>
-                <li>Huge variety of terrain across 10 resorts</li>
-                <li>Good balance of culture and convenience</li>
-                <li>Easier access from Tokyo (bus or train)</li>
+                <li>Legendary consistent dry powder — 15m+ annually</li>
+                <li>Night skiing until 8:30pm at Grand Hirafu</li>
+                <li>Great nightlife, restaurants, and bars in Hirafu</li>
+                <li>Easy for English speakers — menus, signs, staff</li>
+                <li>Backcountry gates for off-piste access</li>
+                <li>Views of Mt. Yotei (the "Mt. Fuji of Hokkaido")</li>
               </ul>
-              <h4>Cons</h4>
-              <ul>
-                <li>Snow can be heavier/wetter than Hokkaido</li>
-                <li>Resorts aren't all linked — need transport between some</li>
-                <li>Can get windy at higher elevations</li>
-              </ul>
-              <h4>Lift Pass</h4>
-              <p class="price">~¥6,200/day (~£31)</p>
             </div>
           </div>
+
+          <h4>Lift Pass</h4>
+          <p class="price">Niseko United All Mountain Pass: ~¥7,500/day (~£38) · 8-day pass ~¥48,000 (~£244) · 14-day pass ~¥72,000 (~£366)</p>
         </div>
-
-        <!-- Myoko Kogen -->
-        <div class="resort-card">
-          <div class="resort-header myoko">
-            <h3>Myoko Kogen</h3>
-            <span class="resort-location">Niigata</span>
-          </div>
-          <div class="resort-body">
-            <div class="resort-stats">
-              <div class="stat"><span class="stat-value">14m+</span><span class="stat-label">Annual snowfall</span></div>
-              <div class="stat"><span class="stat-value">760m</span><span class="stat-label">Vertical drop</span></div>
-              <div class="stat"><span class="stat-value">5</span><span class="stat-label">Resorts in area</span></div>
-            </div>
-            <p>One of Japan's best-kept secrets. Myoko gets dumped on consistently and sees far fewer international tourists. The authentic Japanese ski town experience with incredible onsens and local food.</p>
-            <div class="resort-details">
-              <h4>Pros</h4>
-              <ul>
-                <li>Massive snowfall — rivals Niseko</li>
-                <li>Way fewer crowds</li>
-                <li>Authentic Japanese mountain town</li>
-                <li>Excellent value for money</li>
-              </ul>
-              <h4>Cons</h4>
-              <ul>
-                <li>Limited English signage/menus</li>
-                <li>Smaller ski areas individually</li>
-                <li>Fewer nightlife options</li>
-              </ul>
-              <h4>Lift Pass</h4>
-              <p class="price">~¥5,000/day (~£25)</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nozawa Onsen -->
-        <div class="resort-card">
-          <div class="resort-header nozawa">
-            <h3>Nozawa Onsen</h3>
-            <span class="resort-location">Nagano</span>
-          </div>
-          <div class="resort-body">
-            <div class="resort-stats">
-              <div class="stat"><span class="stat-value">12m+</span><span class="stat-label">Annual snowfall</span></div>
-              <div class="stat"><span class="stat-value">1,085m</span><span class="stat-label">Vertical drop</span></div>
-              <div class="stat"><span class="stat-value">13</span><span class="stat-label">Free public onsens</span></div>
-            </div>
-            <p>A charming traditional village built around natural hot springs. The skiing is excellent with great tree runs and steep terrain up top, and the village itself is one of the most atmospheric in Japan.</p>
-            <div class="resort-details">
-              <h4>Pros</h4>
-              <ul>
-                <li>Beautiful traditional village atmosphere</li>
-                <li>13 free public onsens</li>
-                <li>Great tree skiing and off-piste</li>
-                <li>Big vertical — one of Japan's largest single resorts</li>
-              </ul>
-              <h4>Cons</h4>
-              <ul>
-                <li>Single resort — less variety day-to-day</li>
-                <li>Village can be hilly to walk around</li>
-                <li>Limited accommodation for big groups</li>
-              </ul>
-              <h4>Lift Pass</h4>
-              <p class="price">~¥5,500/day (~£28)</p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -296,44 +163,55 @@
   <section class="section" id="flights">
     <div class="container">
       <h2>Getting There</h2>
-      <p class="section-intro">Where you fly depends on which resort you pick. Here's the breakdown.</p>
+      <p class="section-intro">London to Niseko via New Chitose Airport (CTS), Sapporo.</p>
 
       <div class="flights-grid">
         <div class="flight-card">
-          <h3>For Niseko</h3>
+          <h3>Flights — London to Sapporo</h3>
           <div class="flight-route">
-            <span class="airport">Your City</span>
+            <span class="airport">London (LHR)</span>
             <span class="arrow">&rarr;</span>
-            <span class="airport">New Chitose (CTS), Sapporo</span>
+            <span class="airport">Tokyo (HND)</span>
+            <span class="arrow">&rarr;</span>
+            <span class="airport">New Chitose (CTS)</span>
           </div>
-          <p>Fly via Asian hubs or direct from London. From New Chitose Airport, it's a <strong>2.5-hour bus</strong> or private transfer to Niseko.</p>
-          <p class="price">Flights: ~£500–900 return</p>
+          <p>No direct flights exist — all routes require at least one connection. The best option is via <strong>Tokyo Haneda</strong> on JAL or ANA, then a short 1.5hr domestic hop to CTS.</p>
+          <h4>Best Airlines</h4>
+          <ul>
+            <li><strong>JAL (Japan Airlines)</strong> — LHR–HND daily, most CTS connections (~176/week). Gold standard for this route. Ski bags fly free.</li>
+            <li><strong>ANA</strong> — Similar routing via HND/NRT, excellent service, ~32 connecting flights/week to CTS.</li>
+            <li><strong>Finnair</strong> — LHR–Helsinki–Tokyo–CTS. Worth checking if they reinstate their direct Helsinki–CTS seasonal route for 26/27.</li>
+            <li><strong>BA + JAL</strong> — BA to Tokyo, then JAL domestic. Use Avios for the long-haul leg (~34,000–40,000 Avios return in economy).</li>
+          </ul>
+          <p class="price">Flights: ~£1,000–1,300 return (economy, JAL/ANA, booked 4-6 months ahead)</p>
         </div>
 
         <div class="flight-card">
-          <h3>For Hakuba / Nozawa / Myoko</h3>
+          <h3>CTS to Niseko — Transfers</h3>
           <div class="flight-route">
-            <span class="airport">Your City</span>
+            <span class="airport">New Chitose (CTS)</span>
             <span class="arrow">&rarr;</span>
-            <span class="airport">Tokyo (NRT/HND)</span>
+            <span class="airport">Niseko (2–3 hrs)</span>
           </div>
-          <p>Fly into Tokyo, then transfer:</p>
-          <ul>
-            <li><strong>Hakuba:</strong> 4hr bus from Shinjuku or 3.5hr via bullet train + local train</li>
-            <li><strong>Nozawa Onsen:</strong> 2.5hr bullet train (Hokuriku Shinkansen) to Iiyama, then 25min bus</li>
-            <li><strong>Myoko Kogen:</strong> 2hr bullet train (Joetsu Shinkansen) to Joetsumyoko, then 30min bus</li>
-          </ul>
-          <p class="price">Flights: ~£450–800 return</p>
+          <h4>Shared Coach (Best Value)</h4>
+          <p><strong>Hokkaido Resort Liner</strong> — Direct to Hirafu/Niseko Village/Annupuri. ~¥6,000 one-way (~£30). Must book 9+ days ahead via access-n.jp. Daily departures Dec–Mar.</p>
+          <h4>Private Transfer (Best for Groups)</h4>
+          <p><strong>Wheels Hokkaido</strong> — 8-seater Hiace van: ~¥81,000 one-way (~£52/person for 8). Door-to-door, handles all the ski bags. Book via wheelshokkaido.com.</p>
+          <p><strong>SkyExpress / Explore Niseko</strong> — Alternative private transfer operators with similar pricing.</p>
+          <h4>Train (Not Recommended)</h4>
+          <p>CTS → Sapporo → Otaru → Kutchan. 3+ hours, two changes, nightmare with ski bags. Avoid.</p>
         </div>
       </div>
 
       <div class="tip-box">
-        <h4>Pro Tips</h4>
+        <h4>Booking Tips</h4>
         <ul>
-          <li>Book a <strong>JR Pass</strong> if doing Honshu resorts — covers bullet trains and saves money</li>
-          <li>Consider a <strong>night in Tokyo</strong> on arrival to recover from the flight before heading to the snow</li>
-          <li>Ski bags fly free on most airlines to Japan — check your airline's policy</li>
-          <li>Set up flight alerts on Google Flights or Skyscanner early for the best deals</li>
+          <li>Book flights <strong>4–6 months ahead</strong> (by July–Aug 2026) for best prices</li>
+          <li>For 10+ passengers, call <strong>JAL/ANA group desks</strong> directly — hold seats with a deposit, flexible name changes</li>
+          <li>JAL and ANA count <strong>ski bags as standard luggage</strong> — confirm allowances when booking</li>
+          <li>Our return date (Jan 30) is just before <strong>Chinese New Year</strong> (Feb 6) — airports will be getting busier</li>
+          <li>Book bus/private transfers as soon as flights are confirmed — popular times fill up weeks ahead</li>
+          <li>Consider a <strong>Wise or Revolut card</strong> for the best exchange rates in Japan</li>
         </ul>
       </div>
     </div>
@@ -343,11 +221,12 @@
   <section class="section section-alt" id="accommodation">
     <div class="container">
       <h2>Where to Stay</h2>
-      <p class="section-intro">Real options for a group of 6-8, with approximate per-person-per-night costs when splitting.</p>
+      <p class="section-intro">Niseko has everything from luxury chalets to traditional ryokans and budget hostels. Here are real options across the spectrum for a group of 6–8, with approximate per-person-per-night costs.</p>
 
       <div class="accom-grid">
+
         <div class="accom-card">
-          <h3>Niseko</h3>
+          <h3>Western-Style Chalets</h3>
           <div class="accom-options">
             <div class="accom-option">
               <span class="accom-type">Gouka Chalet — Hirafu</span>
@@ -368,153 +247,308 @@
         </div>
 
         <div class="accom-card">
-          <h3>Hakuba</h3>
+          <h3>Traditional Japanese</h3>
           <div class="accom-options">
             <div class="accom-option">
-              <span class="accom-type">Zen Chalets — Happo Village</span>
-              <span class="accom-price">~£25–45 pp/night</span>
-              <p>Modern villas with cathedral ceilings and underfloor heating. 120m walk to Happo One Gondola, surrounded by cafes and bars. 2 bedrooms + loft bunk room. Book via zenchaletshakuba.com.</p>
+              <span class="accom-type">Yugokorotei — Annupuri Onsen</span>
+              <span class="accom-price">~£50–75 pp/night</span>
+              <p>Traditional onsen ryokan near Annupuri gondola. 17 rooms, natural hot spring with 24-hour guest access. Dinner (kaiseki) and breakfast available. Quieter, more authentic feel. Book via niseko-annupurionsen.com or Booking.com.</p>
             </div>
             <div class="accom-option">
-              <span class="accom-type">Alpine Condos — Happo One</span>
-              <span class="accom-price">~£25–40 pp/night</span>
-              <p>True ski-in/ski-out. 3-bedroom suite (sleeps 8) with full kitchen and living area. Steps from the Sakka lifts. Great value. Book via alpine-hakuba.com.</p>
+              <span class="accom-type">Moku-no-Sho — Konbu Onsen (Splurge)</span>
+              <span class="accom-price">~£280–340 pp/night</span>
+              <p>Luxury ryokan with private and communal onsen. Multi-course kaiseki dinner and breakfast included. Rooms with private outdoor baths available. 20 min from Hirafu — best as a 1–2 night splurge. Book via mokunosho.com.</p>
             </div>
             <div class="accom-option">
-              <span class="accom-type">The Castle — Echoland</span>
-              <span class="accom-price">~£35–55 pp/night</span>
-              <p>Largest self-contained chalet in Hakuba Valley. 8 bedrooms, 9 en-suite bathrooms, games room with pool table. Near Echoland bars and restaurants. Book via Hakuba Hospitality Group.</p>
+              <span class="accom-type">Pension Fryingpan — Annupuri</span>
+              <span class="accom-price">~£70–100 pp/night</span>
+              <p>Charming 8-room "auberge" (French-Japanese pension) 2 min walk from Annupuri gondola. Family-run by two professional chefs — excellent on-site dinner available (~¥2,500). A group of 8 could book the whole place. Book via Booking.com.</p>
             </div>
           </div>
         </div>
 
         <div class="accom-card">
-          <h3>Myoko Kogen</h3>
+          <h3>Budget & Hostels</h3>
           <div class="accom-options">
             <div class="accom-option">
-              <span class="accom-type">Rider's Ridge — Akakura Onsen</span>
-              <span class="accom-price">~£35–40 pp/night</span>
-              <p>Newly renovated luxury chalet, ski-in/ski-out overlooking Akakura Onsen Ski Field. 5 bedrooms, sleeps 12. Valley views, laundry, drying room. Book via Wasabi Chalets or Booking.com.</p>
-            </div>
-            <div class="accom-option">
-              <span class="accom-type">Myoko Ski Lodge — Akakura</span>
-              <span class="accom-price">~£20–30 pp/night</span>
-              <p>Western-style lodge, 3-minute walk to slopes. Continental breakfast included, natural onsen hot springs on-site. Great value base. Book via myokoskilodge.com.</p>
-            </div>
-            <div class="accom-option">
-              <span class="accom-type">Kitsune Lodge — Ikenotaira</span>
-              <span class="accom-price">~£25–35 pp/night</span>
-              <p>Stylish boutique lodge with 9 bedrooms, wood fireplace, communal spaces. Perfect for exclusive group bookings. Book via kitsunemyoko.com.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="accom-card">
-          <h3>Nozawa Onsen</h3>
-          <div class="accom-options">
-            <div class="accom-option">
-              <span class="accom-type">Nozawa Gondola Apartments</span>
-              <span class="accom-price">~£60–70 pp/night</span>
-              <p>Luxury 3-bedroom apartments just 20m from the slopes, 30m to main gondola. Full kitchens, en-suite bathrooms, jacuzzi access. Book via nozawaholidays.com.</p>
-            </div>
-            <div class="accom-option">
-              <span class="accom-type">Kamoshika Ski Lodge</span>
+              <span class="accom-type">Freeride Backpackers Lodge — Niseko Village</span>
               <span class="accom-price">~£45–60 pp/night</span>
-              <p>Luxury renovated ski-in/ski-out lodge next to Nagasaka Gondola. 5 en-suite bedrooms, sleeps up to 16. Premium finishes throughout. Book via staynozawa.com.</p>
+              <p>Classic powder-chasers hostel near Banzai chairlift. Continental breakfast included. The <strong>3-bedroom ski house (sleeps 8) at ~£60pp</strong> is the standout group option. Strong social atmosphere. Book via freeridelodgeniseko.com.</p>
             </div>
             <div class="accom-option">
-              <span class="accom-type">Sakaya Hanare Jon Nobi</span>
-              <span class="accom-price">~£40–55 pp/night</span>
-              <p>Modern apartments by renowned Ryokan Sakaya. 3 twin bedrooms + loft, full kitchen, jacuzzi. 2-min walk to lifts via moving walkway. Book via ryokan-sakaya.co.jp.</p>
+              <span class="accom-type">Moiwa Lodge — Moiwa</span>
+              <span class="accom-price">~£30–50 pp/night</span>
+              <p>Slopeside at Moiwa ski area with free 3-min shuttle to Annupuri. Self-contained cottages sleeping 8 available. Free breakfast. Some of the nicest dorms on any ski field. Book via moiwalodge.com.</p>
+            </div>
+            <div class="accom-option">
+              <span class="accom-type">Ramat Niseko — East Hirafu</span>
+              <span class="accom-price">~£50–75 pp/night</span>
+              <p>Aussie-run budget lodge with free breakfast and free "First Tracks" morning shuttle. Bar, kitchen, and social lounge. Two adjacent lodges (Ramat + Snowgum). Book via ramatniseko.com.</p>
             </div>
           </div>
         </div>
+
+        <div class="accom-card">
+          <h3>Mid-Range Japanese-Style</h3>
+          <div class="accom-options">
+            <div class="accom-option">
+              <span class="accom-type">Annupuri Lodge — Annupuri</span>
+              <span class="accom-price">~£60–90 pp/night</span>
+              <p>8 individually-designed rooms, 2 min walk to Annupuri gondola. Breakfast included. On-site Luckyfingers bar serving izakaya-style food. Japanese bath facility 7 min walk away. Book via annupurilodge.com.</p>
+            </div>
+            <div class="accom-option">
+              <span class="accom-type">Slowlife Niseko — Hirafu</span>
+              <span class="accom-price">~£50–80 pp/night</span>
+              <p>B&B with breakfast and free après-ski snacks. Apartment sleeping 6 with ensuite available. Hosts organise group dinners, onsen trips, and day trips. Shuttle to Hirafu and Hanazono lifts from the door. Book via email: chad.slowlife@gmail.com.</p>
+            </div>
+            <div class="accom-option">
+              <span class="accom-type">Zaborin — Hanazono (Ultimate Splurge)</span>
+              <span class="accom-price">~£380+ pp/night</span>
+              <p>15 private villas in a forested setting, each with its own indoor and outdoor private onsen. Award-winning kaiseki dinner and breakfast included. Tattoo-friendly. Niseko's premier luxury experience — best for 1–2 nights. Book via zaborin.com.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="tip-box">
         <h4>Booking Tips</h4>
         <ul>
-          <li>Book accommodation <strong>3-6 months ahead</strong> — popular spots sell out fast</li>
-          <li>Look on <strong>Booking.com</strong>, <strong>Airbnb</strong>, and resort-specific booking sites listed above</li>
+          <li>Book accommodation <strong>3–6 months ahead</strong> — popular spots sell out fast for January</li>
+          <li><strong>Annupuri</strong> has the best concentration of Japanese-character properties and is quieter and cheaper than Hirafu</li>
           <li>A chalet/lodge with a <strong>drying room</strong> is a game-changer for ski gear</li>
-          <li>Check if <strong>meals are included</strong> — many Japanese lodges include dinner and breakfast</li>
-          <li>Myoko and Hakuba offer the <strong>best value</strong> — Niseko and Nozawa are pricier but very polished</li>
+          <li>Many Japanese lodges include <strong>dinner and breakfast</strong> — factor this into the price comparison</li>
+          <li>Consider splitting the trip: <strong>budget hostel for most nights + 1–2 nights in a ryokan</strong> for the full experience</li>
+          <li>Look on <strong>Booking.com</strong>, <strong>Airbnb</strong>, and the resort-specific booking sites listed above</li>
         </ul>
       </div>
     </div>
   </section>
 
+  <!-- Full-width Image Break -->
+  <div class="image-break">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&auto=format&fit=crop&q=80" alt="Mountain landscape at sunset" loading="lazy">
+    <div class="image-break-overlay"></div>
+  </div>
+
   <!-- Itinerary -->
   <section class="section" id="itinerary">
     <div class="container">
-      <h2>Sample 7-Day Itinerary</h2>
-      <p class="section-intro">A balanced week mixing big ski days with rest, culture, and après.</p>
+      <h2>Sample 14-Day Itinerary</h2>
+      <p class="section-intro">Two weeks of powder, onsens, and izakayas. Here's how to pace it without burning out.</p>
 
       <div class="itinerary-timeline">
         <div class="day-card">
           <div class="day-number">Day 1</div>
           <div class="day-content">
-            <h3>Arrive & Settle In</h3>
-            <p>Fly into Japan, transfer to resort. Check into accommodation, grab gear rentals if needed, get your bearings around town. Welcome dinner and beers with the boys.</p>
+            <h3>Fri Jan 16 — Arrive in Niseko</h3>
+            <p>Fly into New Chitose Airport, transfer to Niseko (2.5hrs). Check in, grab gear rentals, get your bearings around Hirafu. Welcome ramen and beers.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 2</div>
           <div class="day-content">
-            <h3>First Day on Snow</h3>
-            <p>Ease into it — explore the mountain, find your legs. Scope out the best runs and learn the lift layout. Après beers at the base lodge.</p>
+            <h3>Sat Jan 17 — First Day on Snow</h3>
+            <p>Ease into it — explore Grand Hirafu, find your legs, scope out the mountain. Après at the base, then dinner in Hirafu village.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 3</div>
           <div class="day-content">
-            <h3>Full Send Day</h3>
-            <p>First lifts to last lifts. Hit the steeps, find the powder stashes, explore the whole mountain. Night skiing if available (Niseko/Hakuba).</p>
+            <h3>Sun Jan 18 — Full Send</h3>
+            <p>First lifts to last lifts. Hit the steeps, find the powder stashes, explore all four resorts. Night skiing at Grand Hirafu until 8:30pm.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 4</div>
           <div class="day-content">
-            <h3>Half Day + Culture</h3>
-            <p>Morning ski session, then afternoon off. Hit the onsens, explore the village, try some local ramen or sushi. Rest those legs for the second half.</p>
+            <h3>Mon Jan 19 — Ski + Onsen</h3>
+            <p>Morning ski session, then afternoon at Goshiki Onsen (outdoor rotenburo with mountain views, ~¥800). Evening yakitori at Bang Bang in Hirafu.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 5</div>
           <div class="day-content">
-            <h3>Powder Day (Hopefully)</h3>
-            <p>If the snow gods deliver, this is your day. Early start, fresh tracks, waist-deep turns. This is why you came to Japan.</p>
+            <h3>Tue Jan 20 — Powder Day</h3>
+            <p>If the snow gods deliver, this is your day. Early start, fresh tracks, waist-deep turns in the Hanazono trees. This is why you came to Japan.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 6</div>
           <div class="day-content">
-            <h3>Last Ski Day</h3>
-            <p>Make it count. Revisit your favourite runs, take some photos/videos, soak it all in. Big group dinner to celebrate — izakaya style.</p>
+            <h3>Wed Jan 21 — Rest Day: Distillery + Otaru</h3>
+            <p>Morning tour at Niseko Distillery (~¥2,000, whisky + gin tasting). Then drive to Otaru — canal town with incredible seafood and sushi. Back for evening drinks at Bar Gyu+.</p>
           </div>
         </div>
 
         <div class="day-card">
           <div class="day-number">Day 7</div>
           <div class="day-content">
-            <h3>Depart</h3>
-            <p>Pack up, transfer to airport. Optional: add a night in Tokyo or Sapporo on the way home for some city exploration and last-minute shopping.</p>
+            <h3>Thu Jan 22 — Back on the Mountain</h3>
+            <p>Refreshed legs, back on snow. Explore Niseko Village and Annupuri sides. Try Jingisukan (Hokkaido lamb BBQ) at Rin for dinner.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 8</div>
+          <div class="day-content">
+            <h3>Fri Jan 23 — Full Day + Night Out</h3>
+            <p>Another big ski day. Evening: cocktails at Bar Gyu+ (hidden fridge-door entrance), then Powder Room nightclub or Tamashii for the late session.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 9</div>
+          <div class="day-content">
+            <h3>Sat Jan 24 — Snowmobiles + Ski</h3>
+            <p>Morning snowmobile tour through the forests (~¥10,000–15,000, guided 60 min). Afternoon ski session. Evening onsen at Niseko Grand Hotel — huge mixed outdoor rotenburo in the snow (~¥1,500).</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 10</div>
+          <div class="day-content">
+            <h3>Sun Jan 25 — Chilled Ski Day</h3>
+            <p>Sleep in, cruise the groomers, enjoy the mountain at your own pace. Lunch on-mountain. Evening ramen at Tozanken followed by Bar Haku for cocktails.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 11</div>
+          <div class="day-content">
+            <h3>Mon Jan 26 — Rest Day: Yoichi + Otaru</h3>
+            <p>Day trip to Nikka Whisky Yoichi Distillery (free tour, paid tastings). Stop at Otaru on the way back for canal walk and seafood dinner.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 12</div>
+          <div class="day-content">
+            <h3>Tue Jan 27 — Powder Chase</h3>
+            <p>Full day on snow — this deep into January, the snowpack is massive (300cm+). Find the untracked lines. Night skiing if legs allow.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 13</div>
+          <div class="day-content">
+            <h3>Wed Jan 28 — Last Full Ski Day</h3>
+            <p>Make it count. Revisit your favourite runs, take photos and videos, soak it all in. Big farewell izakaya dinner with the boys.</p>
+          </div>
+        </div>
+
+        <div class="day-card">
+          <div class="day-number">Day 14</div>
+          <div class="day-content">
+            <h3>Thu Jan 29 — Morning Ski + Depart</h3>
+            <p>Quick morning laps if time allows, then transfer to CTS for evening flights home. Or add a night in Sapporo — ramen alley, Susukino bars, and Sapporo Beer Museum.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Beyond the Slopes -->
+  <section class="section section-alt" id="activities">
+    <div class="container">
+      <h2>Beyond the Slopes</h2>
+      <p class="section-intro">Niseko isn't just about skiing. Onsens, whisky, world-class food, and day trips to some of Hokkaido's best towns.</p>
+
+      <div class="activities-grid">
+
+        <div class="activity-card">
+          <div class="activity-icon">♨️</div>
+          <h3>Onsens</h3>
+          <p>Niseko sits on volcanic ground with some of Japan's best hot springs. Nothing beats soaking in an outdoor rotenburo surrounded by falling snow after a day on the mountain.</p>
+          <ul>
+            <li><strong>Goshiki Onsen</strong> — Indoor + outdoor, rich mineral water, mountain views. ~¥800. Near Annupuri.</li>
+            <li><strong>Niseko Grand Hotel</strong> — Massive mixed-gender outdoor rotenburo (bathing wear provided). ~¥1,500. Spectacular in a snowstorm.</li>
+            <li><strong>Kanronomori</strong> — Private 50-min sessions for ~¥3,000. Great for a group booking.</li>
+            <li><strong>One Niseko</strong> — Indoor + outdoor at Moiwa. ~¥950 including towels.</li>
+            <li><strong>Yu Meguri Pass</strong> — Visit 3 onsens for ~¥2,100. Great for onsen-hopping.</li>
+          </ul>
+          <p><em>Etiquette: onsens are nude, no tattoo cover-ups needed at some (check ahead). Wash thoroughly before entering. No phones in the bathing area.</em></p>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🥃</div>
+          <h3>Whisky & Drinks</h3>
+          <p>Hokkaido is home to some of Japan's finest distilleries, and Niseko now has its own.</p>
+          <ul>
+            <li><strong>Niseko Distillery</strong> — Founded by century-old sake brewery Hakkaisan. Tours at 10:00 and 15:00 daily, ~¥2,000. Whisky and craft gin using snowmelt water. Book at niseko-distillery.com.</li>
+            <li><strong>Nikka Whisky Yoichi</strong> — 1hr from Niseko. Free tours (book ahead). Paid tastings including Yoichi Single Cask. Restaurant serving Scottish dishes paired with whisky. Combine with an Otaru stop.</li>
+          </ul>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🍜</div>
+          <h3>Food</h3>
+          <p>Hokkaido has some of the best food in Japan — fresh seafood, miso ramen, lamb BBQ, and farm produce.</p>
+          <ul>
+            <li><strong>Bang Bang</strong> — Go-to yakitori izakaya. Charcoal-grilled skewers. Book ahead.</li>
+            <li><strong>Rin</strong> — Jingisukan (Hokkaido lamb BBQ) with local vegetables. Uniquely Hokkaido.</li>
+            <li><strong>Tozanken</strong> — No-reservations ramen shop. Asahikawa-style pork broth. ~£4–6.</li>
+            <li><strong>AFURI</strong> — Yuzu-infused ramen in a stylish setting. Originally from Tokyo.</li>
+            <li><strong>Sushi Shin</strong> — At Sansui Niseko. Branch of Sapporo's Michelin 3-star Sushi Miyakawa. Splurge dinner.</li>
+            <li><strong>Ryunabe</strong> — Premium Chinese hot pot with Hokkaido seafood. Great for groups.</li>
+            <li><strong>Milk Kobo</strong> — Famous soft serve, choux creme, and cheese tarts. Essential stop.</li>
+          </ul>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🎿</div>
+          <h3>Other Winter Activities</h3>
+          <ul>
+            <li><strong>Snowmobiling</strong> — Guided 60-min tours through forests with Mt. Yotei views. ~¥10,000–15,000. Via Hanazono or Explore Niseko.</li>
+            <li><strong>Snowshoeing</strong> — Guided treks through birch forests. NOASC runs private group tours (~¥29,500 for 1–4 people).</li>
+            <li><strong>Snow Tubing</strong> — Hanazono snow tube park with conveyor lift. ~¥2,500/hr. Night sessions available.</li>
+            <li><strong>Sushi-Making Class</strong> — Learn to make 13 types of sushi + tamagoyaki. Bookable through local activity desks or ByFood.</li>
+          </ul>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🏙️</div>
+          <h3>Day Trips</h3>
+          <ul>
+            <li><strong>Otaru</strong> (1.5–2hrs) — Beautiful Meiji-era canal town. Stunning in winter snow. Outstanding sushi restaurants and seafood market. Handcrafted glassware shops on Sakaimachi Street. Canal boat cruises ~¥1,800.</li>
+            <li><strong>Yoichi</strong> (1hr) — Nikka Whisky Distillery. Combine with Otaru for a full coastal day trip.</li>
+            <li><strong>Sapporo</strong> (2–2.5hrs) — Ramen Yokocho (alley of 17 ramen shops), Susukino entertainment district, Sapporo Beer Museum (free entry, paid tastings). Shuttle bus ~¥2,500–6,600 one-way.</li>
+          </ul>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-icon">🍺</div>
+          <h3>Après-Ski & Nightlife</h3>
+          <p>Hirafu's nightlife is genuinely excellent — cosmopolitan, lively, and stays open late.</p>
+          <ul>
+            <li><strong>Bar Gyu+</strong> — Iconic. Hidden fridge-door entrance, craft cocktails, good whisky. The starting point.</li>
+            <li><strong>Bar Haku</strong> — Award-winning mixologist. Try the "Wa-jito" (Japanese mojito).</li>
+            <li><strong>Tamashii</strong> — Wide spirits selection, billiard tables, live music and DJ sets. Food menu.</li>
+            <li><strong>Powder Room</strong> — Niseko's premium nightclub. Lounge + dance floor. The late-night option.</li>
+            <li><strong>Niseko Confidential</strong> — New bar from Hong Kong hospitality veterans. Creative cocktails and bar bites.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-width Image Break -->
+  <div class="image-break">
+    <img src="https://images.unsplash.com/photo-1578271887552-5ac3a72752bc?w=1400&auto=format&fit=crop&q=80" alt="Snowy Japanese winter scene" loading="lazy">
+    <div class="image-break-overlay"></div>
+  </div>
+
   <!-- Costs -->
-  <section class="section section-alt" id="costs">
+  <section class="section" id="costs">
     <div class="container">
       <h2>Cost Breakdown</h2>
-      <p class="section-intro">Estimated per-person costs for a 7-day trip (in GBP). Actual costs vary by resort — ranges shown below.</p>
+      <p class="section-intro">Estimated per-person costs for 14 nights in Niseko (Jan 16–30), in GBP.</p>
 
       <div class="cost-table-wrapper">
         <table class="cost-table">
@@ -528,58 +562,52 @@
           </thead>
           <tbody>
             <tr>
-              <td>Return Flights</td>
-              <td>£450</td>
-              <td>£650</td>
-              <td>£900</td>
+              <td>Return Flights (LHR–CTS)</td>
+              <td>£800</td>
+              <td>£1,100</td>
+              <td>£1,400</td>
             </tr>
             <tr>
-              <td>Accommodation (7 nights)</td>
-              <td>£175</td>
-              <td>£350</td>
-              <td>£525</td>
+              <td>Accommodation (14 nights)</td>
+              <td>£420</td>
+              <td>£770</td>
+              <td>£1,050</td>
             </tr>
             <tr>
-              <td>Lift Pass (5 days)</td>
-              <td>£125</td>
-              <td>£155</td>
-              <td>£185</td>
+              <td>Lift Pass (10 days)</td>
+              <td>£310</td>
+              <td>£310</td>
+              <td>£370</td>
             </tr>
             <tr>
-              <td>Airport Transfers</td>
-              <td>£40</td>
-              <td>£65</td>
-              <td>£110</td>
+              <td>Airport Transfers (return)</td>
+              <td>£60</td>
+              <td>£105</td>
+              <td>£105</td>
             </tr>
             <tr>
-              <td>Food & Drink</td>
-              <td>£175</td>
-              <td>£275</td>
-              <td>£450</td>
+              <td>Food & Drink (14 days)</td>
+              <td>£280</td>
+              <td>£490</td>
+              <td>£840</td>
             </tr>
             <tr>
               <td>Gear Rental (if needed)</td>
-              <td>£100</td>
-              <td>£160</td>
-              <td>£220</td>
+              <td>£180</td>
+              <td>£280</td>
+              <td>£400</td>
             </tr>
-            <tr>
-              <td>Travel Insurance</td>
-              <td>£40</td>
-              <td>£55</td>
+<tr>
+              <td>Activities (onsens, trips, etc.)</td>
               <td>£80</td>
-            </tr>
-            <tr>
-              <td>Misc (onsens, shopping, etc.)</td>
-              <td>£50</td>
-              <td>£110</td>
-              <td>£220</td>
+              <td>£200</td>
+              <td>£400</td>
             </tr>
             <tr class="total-row">
               <td><strong>Total Per Person</strong></td>
-              <td><strong>£1,155</strong></td>
-              <td><strong>£1,820</strong></td>
-              <td><strong>£2,690</strong></td>
+              <td><strong>£2,130</strong></td>
+              <td><strong>£3,255</strong></td>
+              <td><strong>£4,565</strong></td>
             </tr>
           </tbody>
         </table>
@@ -589,9 +617,10 @@
         <h4>Money Tips</h4>
         <ul>
           <li>Japan is still largely a <strong>cash society</strong> in ski towns — bring yen or use 7-Eleven ATMs</li>
-          <li>Food in Japan is <strong>incredible value</strong> — a bowl of ramen is ~£4-6</li>
+          <li>Food in Japan is <strong>incredible value</strong> — a bowl of ramen is ~£4–6, a full izakaya dinner ~£15–25</li>
           <li>Get a <strong>Wise or Revolut card</strong> for the best exchange rates</li>
           <li>Convenience stores (konbini) are your friend — cheap, delicious food 24/7</li>
+          <li>Budget option: stay in a <strong>hostel + eat at konbini/ramen shops</strong> and you can do 2 weeks for ~£2,200</li>
         </ul>
       </div>
     </div>
@@ -600,7 +629,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>Japow 2027 — Let's make it happen, boys.</p>
+      <p>Japow 2027 — Niseko, Jan 16–30. Let's make it happen, boys.</p>
     </div>
   </footer>
 
