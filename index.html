@@ -45,29 +45,88 @@
   <section class="section" id="when">
     <div class="container">
       <h2>When to Go</h2>
-      <p class="section-intro">Japan's powder season runs December through March, but there's a sweet spot for the best snow with fewer crowds.</p>
+      <p class="section-intro">Japan's powder season runs December through March. Here's a week-by-week breakdown of conditions and crowd levels to find the sweet spot.</p>
 
-      <div class="timing-grid">
-        <div class="timing-card best">
-          <div class="timing-badge">Best Window</div>
-          <h3>Mid-January — Mid-February</h3>
-          <p>Peak powder season. Consistent snowfall, cold temperatures, and the deepest base depths. This is when Japan earns its "Japow" reputation — expect regular dumps of light, dry powder.</p>
+      <!-- Season Chart -->
+      <div class="season-chart" id="season-chart">
+        <div class="chart-legend">
+          <div class="legend-group">
+            <span class="legend-title">Snow</span>
+            <span class="legend-bar snow-bar" style="height:12px"></span> Heavy
+            <span class="legend-bar snow-bar" style="height:8px"></span> Good
+            <span class="legend-bar snow-bar" style="height:4px"></span> Light
+          </div>
+          <div class="legend-group">
+            <span class="legend-title">Crowds</span>
+            <span class="legend-dot crowd-low"></span> Quiet
+            <span class="legend-dot crowd-med"></span> Moderate
+            <span class="legend-dot crowd-high"></span> Busy
+            <span class="legend-dot crowd-peak"></span> Peak
+          </div>
         </div>
 
-        <div class="timing-card avoid">
-          <div class="timing-badge warning">Avoid</div>
-          <h3>Busy Periods</h3>
+        <div class="chart-scroll">
+          <div class="chart-grid" id="chart-grid">
+            <!-- Weeks are rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Week detail panel -->
+        <div class="week-detail" id="week-detail">
+          <p class="week-detail-prompt">Tap a week to see details</p>
+        </div>
+      </div>
+
+      <!-- Holiday Calendar -->
+      <h3 class="subsection-title">Holiday Calendar — Who's Coming When</h3>
+      <p class="section-intro">Crowds at Japanese resorts are driven by holidays from multiple countries. Here are the key dates for the 2026/27 season.</p>
+
+      <div class="holiday-grid">
+        <div class="holiday-card">
+          <div class="holiday-flag">🇬🇧</div>
+          <h4>United Kingdom</h4>
           <ul>
-            <li><strong>Chinese New Year</strong> (late Jan / early Feb) — Niseko especially gets packed</li>
-            <li><strong>UK Half Term</strong> (mid-Feb) — prices spike and popular spots get booked out</li>
-            <li><strong>Japanese Public Holidays</strong> — Coming of Age Day (mid-Jan), National Foundation Day (Feb 11)</li>
+            <li><strong>Christmas Break:</strong> ~Dec 18 – Jan 4</li>
+            <li><strong>February Half Term:</strong> Feb 15–19</li>
+            <li>Half term drives prices up at Niseko & Hakuba especially</li>
           </ul>
         </div>
+        <div class="holiday-card">
+          <div class="holiday-flag">🇦🇺</div>
+          <h4>Australia</h4>
+          <ul>
+            <li><strong>Summer Holidays:</strong> ~Dec 18 – Jan 28</li>
+            <li>Huge Aussie contingent in Niseko and Hakuba</li>
+            <li>Crowds drop significantly from late January</li>
+          </ul>
+        </div>
+        <div class="holiday-card">
+          <div class="holiday-flag">🇨🇳🇰🇷</div>
+          <h4>China & Korea</h4>
+          <ul>
+            <li><strong>Chinese New Year:</strong> Feb 6 (Golden Week Feb 6–12)</li>
+            <li><strong>Korean Seollal:</strong> Feb 6–8</li>
+            <li>Niseko gets very crowded; Myoko & Nozawa less affected</li>
+          </ul>
+        </div>
+        <div class="holiday-card">
+          <div class="holiday-flag">🇯🇵</div>
+          <h4>Japan</h4>
+          <ul>
+            <li><strong>New Year (Oshogatsu):</strong> Dec 29 – Jan 3</li>
+            <li><strong>Coming of Age Day:</strong> Jan 11</li>
+            <li><strong>National Foundation Day:</strong> Feb 11</li>
+            <li>Weekends are always busier than weekdays</li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="timing-card recommendation">
+      <!-- Recommendation -->
+      <div class="timing-grid">
+        <div class="timing-card recommendation full-width">
           <div class="timing-badge rec">Our Pick</div>
-          <h3>Late January — Early February 2027</h3>
-          <p>Targeting the <strong>last week of January or first week of February</strong> gives you peak conditions while dodging the worst of the holiday crowds. Aim for a Saturday-to-Saturday window for the best flight options.</p>
+          <h3>Jan 17–31 or Mar 7–21, 2027</h3>
+          <p>The <strong>last two weeks of January</strong> hit the sweet spot — peak snowfall, Australian holidays winding down, and before Chinese New Year (Feb 6). Alternatively, <strong>early-to-mid March</strong> offers excellent value with good snow, fewer crowds, and longer sunny days — just slightly warmer temps. Aim for a Saturday-to-Saturday window for the best flight options.</p>
         </div>
       </div>
     </div>

@@ -318,6 +318,256 @@ li {
   margin-top: 0.5rem;
 }
 
+.timing-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.subsection-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+/* === Season Chart === */
+.season-chart {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-light);
+  align-items: center;
+}
+
+.legend-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-title {
+  font-weight: 600;
+  color: var(--navy);
+  margin-right: 0.3rem;
+}
+
+.legend-bar {
+  display: inline-block;
+  width: 16px;
+  border-radius: 2px;
+}
+
+.snow-bar {
+  background: var(--ice-dark);
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.crowd-low { background: #48bb78; }
+.crowd-med { background: #ecc94b; }
+.crowd-high { background: #ed8936; }
+.crowd-peak { background: #e53e3e; }
+
+.chart-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0.5rem;
+}
+
+.chart-grid {
+  display: flex;
+  gap: 4px;
+  min-width: fit-content;
+}
+
+.chart-week {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.4rem 0.3rem;
+  border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+  min-width: 60px;
+  position: relative;
+}
+
+.chart-week:hover,
+.chart-week.active {
+  background: var(--off-white);
+  transform: translateY(-2px);
+}
+
+.chart-week.active {
+  outline: 2px solid var(--ice-dark);
+}
+
+.chart-week.recommended {
+  background: rgba(72, 187, 120, 0.08);
+}
+
+.chart-week.recommended::after {
+  content: '★';
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 0.55rem;
+  color: #48bb78;
+}
+
+.week-label {
+  font-size: 0.65rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.week-month {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray);
+  margin-bottom: 0.4rem;
+}
+
+.snow-col {
+  width: 32px;
+  background: linear-gradient(to top, var(--ice-dark), var(--ice));
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 0.3rem;
+  transition: height 0.3s;
+}
+
+.sunny-col {
+  width: 32px;
+  background: linear-gradient(to top, #ecc94b, #f6e05e);
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 0.3rem;
+  transition: height 0.3s;
+  opacity: 0.8;
+}
+
+.bar-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 80px;
+}
+
+.crowd-indicator {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  margin-top: 0.2rem;
+}
+
+.week-detail {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--off-white);
+  border-radius: 8px;
+  min-height: 60px;
+  transition: all 0.2s;
+}
+
+.week-detail-prompt {
+  color: var(--gray);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.week-detail h4 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  color: var(--navy);
+}
+
+.week-detail-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.week-detail-stat {
+  font-size: 0.85rem;
+}
+
+.week-detail-stat strong {
+  color: var(--navy);
+}
+
+.week-detail-holidays {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.holiday-tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(237, 137, 54, 0.12);
+  color: #c05621;
+}
+
+.holiday-tag.good {
+  background: rgba(72, 187, 120, 0.12);
+  color: #276749;
+}
+
+/* === Holiday Calendar === */
+.holiday-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.holiday-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.3rem;
+  box-shadow: var(--shadow);
+}
+
+.holiday-flag {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.holiday-card h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.holiday-card ul {
+  font-size: 0.85rem;
+  padding-left: 1rem;
+}
+
+.holiday-card li {
+  margin-bottom: 0.3rem;
+  color: var(--text-light);
+}
+
 /* === Resort Cards === */
 .resort-grid {
   display: grid;
@@ -658,8 +908,13 @@ li {
   .timing-grid,
   .resort-grid,
   .flights-grid,
-  .accom-grid {
+  .accom-grid,
+  .holiday-grid {
     grid-template-columns: 1fr;
+  }
+
+  .holiday-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .nav-links {
